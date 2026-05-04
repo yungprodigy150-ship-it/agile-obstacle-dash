@@ -30,7 +30,7 @@ export class MainScene extends Phaser.Scene {
   }
 
   preload() {
-    const graphics = this.make.graphics({ x: 0, y: 0, add: false });
+    const graphics = this.make.graphics({ x: 0, y: 0 }, false);
     
     // Player - Space Suit Style
     graphics.fillStyle(0x3b82f6);
@@ -165,7 +165,7 @@ export class MainScene extends Phaser.Scene {
     
     const meteor = this.meteors.create(startX, startY, 'meteor') as Phaser.Physics.Arcade.Sprite;
     meteor.setDepth(50);
-    meteor.body.allowGravity = false;
+    (meteor.body as Phaser.Physics.Arcade.Body).allowGravity = false;
     meteor.setAngularVelocity(Phaser.Math.Between(50, 150));
     
     const targetX = side ? width + 100 : -100;
